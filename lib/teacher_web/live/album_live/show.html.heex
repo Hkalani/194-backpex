@@ -1,0 +1,28 @@
+<h1 class="text-center text-xl mb-6 font-semibold leading-8">
+  Show Album
+</h1>
+
+<ul>
+  <li class="p-1">
+    <strong>Title:</strong>
+    <%= @album.title %>
+  </li>
+
+  <li class="p-1">
+    <strong>Artist:</strong>
+    <%= @album.artist %>
+  </li>
+
+  <li class="p-1">
+    <strong>Year:</strong>
+    <%= @album.year %>
+  </li>
+
+  <li class="p-1">
+    <strong>Summary:</strong>
+    <%= @album.description %>
+  </li>
+
+</ul>
+
+<.back navigate={~p"/albums"}>Back to albums</.back>
