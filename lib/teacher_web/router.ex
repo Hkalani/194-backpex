@@ -1,6 +1,8 @@
 defmodule TeacherWeb.Router do
   use TeacherWeb, :router
 
+  import Backpex.Router
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +10,10 @@ defmodule TeacherWeb.Router do
     plug :put_root_layout, html: {TeacherWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+  end
+
+  pipeline :admin do
+    plug :put_root_layout, html: {TeacherWeb.Layouts, :root_admin}
   end
 
   pipeline :api do
@@ -19,9 +25,20 @@ defmodule TeacherWeb.Router do
 
     live "/albums", AlbumLive.Index, :index
     live "/albums/:id", AlbumLive.Show, :show
-    
+    live "/albums/new", AlbumLive.Index, :new
 
     get "/", PageController, :home
+  end
+
+  scope "/admin", TeacherWeb do
+    pipe_through [:browser, :admin]
+
+    backpex_routes()
+
+    live_session :default, on_mount: Backpex.InitAssigns do
+      live_resources "/posts", Live.PostLive
+      live_resources "/albums", Live.AlbumLive
+    end
   end
 
   # Other scopes may use custom stacks.

@@ -50,7 +50,10 @@ defmodule Teacher.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+      {:backpex, "~> 0.8.2"},
+    {:petal_components, "~> 2.5"},
+      {:spark, "~> 2.2.35"}
     ]
   end
 

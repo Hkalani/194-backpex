@@ -11,7 +11,7 @@ defmodule TeacherWeb.AlbumLive.FormComponent do
         <%= @title %>
         <:subtitle>Use this form to manage album records in your database.</:subtitle>
       </.header>
-
+      
       <.simple_form
         for={@form}
         id="album-form"

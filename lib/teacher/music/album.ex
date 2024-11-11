@@ -11,6 +11,10 @@ defmodule Teacher.Music.Album do
     timestamps(type: :utc_datetime)
   end
 
+  def changeset(album, attrs, _metadata) do
+    changeset(album, attrs)
+  end
+
   @doc false
   def changeset(album, attrs) do
     album
