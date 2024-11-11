@@ -1,0 +1,27 @@
+<div class="font-bold text-xl mb-4">
+  <h1>Posts</h1>
+</div>
+<table class="w-full border-collapse border border-slate-400">
+  <thead>
+    <tr>
+      <th class="p-2 bg-gray-50 border border-slate-300">Artist</th>
+      <th class="p-2 bg-gray-50 border border-slate-300">post</th>
+      <th class="p-2 bg-gray-50 border border-slate-300">Title</th>
+      <th class="p-2 bg-gray-50 border border-slate-300">Year</th>
+      <th class="p-2 bg-gray-50 border border-slate-300"></th>
+    </tr>
+  </thead>
+  <tbody id="posts">
+    <%= for post <- @posts do %>
+      <tr id={"post-#{post.id}"}>
+        <td class="p-2 border border-slate-300"><%= post.title %></td>
+        <td class="p-2 border border-slate-300"><%= post.views %></td>
+        <td class="p-2 border border-slate-300">
+          <span>
+            <.link navigate={~p"/posts/#{post}"}>Show</.link>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
